@@ -13,6 +13,11 @@
 
       <style>
 
+        @font-face {
+          font-family: League Spartan;
+          src: url("fonts/LeagueSpartan-Bold.otf") format("opentype");
+        }
+
         body {
             background: rgb(240, 240, 240);
             margin: 0;
@@ -29,7 +34,8 @@
         }
 
         .area h1 {
-            margin: 1em;
+            margin: 0;
+            font-family: "League Spartan";
         }
 
         .area h2 {
@@ -39,11 +45,25 @@
             font-weight: normal;
         }
 
+        .section {
+            padding: 2em;
+        }
+
+        .section.title {
+            padding: 0;
+            margin: 2em;
+            transition: .1s;
+            cursor: pointer;
+        }
+
+        .title:hover {
+            color: rgb(200, 150, 215);
+        }
+
         .entry {
             transition: .2s;
-            margin: 1.5em .25em;
+            margin-bottom: 3em;
             background: white;
-            padding: 2em;
             border-radius: .25em;
             box-shadow: 1px 2px 5px rgba(0, 0, 0, .1);
         }
@@ -75,6 +95,22 @@
             margin-top: .5em;
         }
 
+        .new_entry {
+            transition: .2s;
+            cursor: pointer;
+            background: transparent;
+            border: 1px solid lightgrey;
+            text-align: center;
+            box-shadow: none;
+            color: grey;
+            margin-bottom: 3em;
+        }
+
+        .new_entry:hover {
+            border-color: rgba(200, 150, 215, .5);
+            color: rgb(200, 150, 215);
+        }
+
       </style>
 
 </head>
@@ -83,9 +119,11 @@
 
     <div class="area">
 
-        <h1>Calendari de migracions</h1>
+        <div class="section title">
+            <h1>Migracions</h1>
+        </div>
 
-        <div class="entry today">
+        <div class="section entry today">
             <h2><b>Today</b></h2>
             <div class="migracio">
                 12:00 - Juice
@@ -98,7 +136,7 @@
             </div>
         </div>
 
-        <div class="entry">
+        <div class="section entry">
             <h2><b>Dimecres</b>, 20 de febrer</h2>
             <div class="migracio">
                 11:00 - Juice
@@ -117,7 +155,7 @@
             </div>
         </div>
 
-        <div class="entry">
+        <div class="section entry">
             <h2><b>Dijous</b>, 21 de febrer</h2>
             <div class="migracio">
                 12:00 - Juice
@@ -128,6 +166,10 @@
             <div class="migracio last">
                 11:00 - Vitor
             </div>
+        </div>
+
+        <div class="section new_entry">
+            ＋ Add entry
         </div>
 
     </div>
