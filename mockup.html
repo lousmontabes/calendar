@@ -1,179 +1,244 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
       <meta charset="utf-8">
 
-      <title>The HTML5 Herald</title>
-      <meta name="description" content="The HTML5 Herald">
-      <meta name="author" content="SitePoint">
+      <title>Calendar</title>
+      <meta name="description" content="Calendar">
+      <meta name="author" content="Lluís Montabes">
 
-      <link rel="stylesheet" href="css/styles.css?v=1.0">
+      <link rel="stylesheet" href="styles/style.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-
-      <style>
-
-        @font-face {
-          font-family: League Spartan;
-          src: url("fonts/LeagueSpartan-Bold.otf") format("opentype");
-        }
-
-        body {
-            background: rgb(240, 240, 240);
-            margin: 0;
-            font-family: "Varela Round"
-        }
-
-        .area {
-            padding: 2em;
-            height: 100vh;
-            min-width: 40em;
-            width: 75vw;
-            max-width: 60em;
-            margin: 0 auto;
-        }
-
-        .area h1 {
-            margin: 0;
-            font-family: "League Spartan";
-        }
-
-        .area h2 {
-            margin: 0;
-            color: rgb(200, 150, 215);
-            margin-bottom: .5em;
-            font-weight: normal;
-        }
-
-        .section {
-            padding: 2em;
-        }
-
-        .section.title {
-            padding: 0;
-            margin: 2em;
-            transition: .1s;
-            cursor: pointer;
-        }
-
-        .title:hover {
-            color: rgb(200, 150, 215);
-        }
-
-        .entry {
-            transition: .2s;
-            margin-bottom: 3em;
-            background: white;
-            border-radius: .25em;
-            box-shadow: 1px 2px 5px rgba(0, 0, 0, .1);
-        }
-
-        .entry.today {
-            border: 1px solid magenta;
-        }
-
-        .entry:hover {
-            transform: translateY(-3px);
-            box-shadow: 1px 5px 10px rgba(0, 0, 0, .1);
-        }
-
-        .migracio {
-            font-size: 22px;
-            padding: .5em 0;
-            border-bottom: 1px solid rgb(240, 240, 240);
-            color: rgb(50, 50, 50);
-        }
-
-        .migracio.last {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .migracio .comments {
-            color: rgb(180, 180, 180);
-            font-size: 16px;
-            margin-top: .5em;
-        }
-
-        .new_entry {
-            transition: .2s;
-            cursor: pointer;
-            background: transparent;
-            border: 1px solid lightgrey;
-            text-align: center;
-            box-shadow: none;
-            color: grey;
-            margin-bottom: 3em;
-        }
-
-        .new_entry:hover {
-            border-color: rgba(200, 150, 215, .5);
-            color: rgb(200, 150, 215);
-        }
-
-      </style>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 </head>
 
 <body>
 
-    <div class="area">
-
-        <div class="section title">
-            <h1>Migracions</h1>
+    <div id="curtain">
+        <div class="flying">
+            <div class="modal centered" id="modal">
+                <div class="section title" id="modal-title">
+                    Caution
+                </div>
+                <div class="section message" id="modal-message">
+                    Are you sure you want to permanently remove this event?
+                </div>
+                <div class="section buttons">
+                    <div class="button caution" id="positive-button">
+                        Remove event
+                    </div>
+                    <div class="button grey" id="negative-button" onclick="hideMessage()">
+                        Cancel
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <div class="header">
+        <div class="area">
+            <h1>Calendari de migracions</h1>
+        </div>
+    </div>
+
+    <div class="area">
 
         <div class="section entry today">
             <h2><b>Today</b></h2>
-            <div class="migracio">
-                12:00 - Juice
-            </div>
-            <div class="migracio">
-                11:00 - Pedro
-            </div>
-            <div class="migracio last">
-                11:00 - Vitor
-            </div>
-        </div>
-
-        <div class="section entry">
-            <h2><b>Dimecres</b>, 20 de febrer</h2>
-            <div class="migracio">
-                11:00 - Juice
-                <div class="comments">
-                    Cal copiar dades de l'usuari.<br />Avisar a secretaria
+            <div class="event">
+                <div class="buttons down">
+                    <i class="far fa-edit"></i>
+                    <i class="far fa-trash-alt caution" onclick="promptRemove()"></i>
+                </div>
+                <div class="info">
+                    10:00 - Juice
+                    <div class="comments">
+                        Cal copiar dades de l'usuari.<br />Avisar a secretaria
+                    </div>
                 </div>
             </div>
-            <div class="migracio">
-                11:00 - Pedro
+            <div class="event">
+                <div class="buttons alt">
+                    <i class="far fa-edit"></i>
+                    <i class="far fa-trash-alt caution" onclick="promptRemove()"></i>
+                </div>
+                <div class="info">
+                    11:00 - Pedro
+                    <div class="comments">
+                        Enviat correu
+                    </div>
+                </div>
             </div>
-            <div class="migracio">
-                12:00 - Pedro
-            </div>
-            <div class="migracio last">
-                12:00 - Vitor
+            <div class="event last">
+                <div class="buttons alt">
+                    <i class="far fa-edit"></i>
+                    <i class="far fa-trash-alt caution" onclick="promptRemove()"></i>
+                </div>
+                <div class="info">
+                    12:00 - Vitor
+                    <div class="comments">
+                        Ordinador del taulell biblioteca GiH<br />Clonar amb imatge de biblioteques
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="section entry">
-            <h2><b>Dijous</b>, 21 de febrer</h2>
-            <div class="migracio">
-                12:00 - Juice
+        <div class="new-entry from-below" id="new-entry-button">
+            <div class="section inactive new-entry-view">
+                <i class="fas fa-plus-square"></i> New entry
             </div>
-            <div class="migracio">
-                11:00 - Pedro
+            <div class="section active new-entry-view">
+                <i class="fas fa-plus-square"></i> New entry
             </div>
-            <div class="migracio last">
-                11:00 - Vitor
+            <div class="section inactive new-entry-view">
+                <i class="fas fa-plus-square"></i> New entry
             </div>
-        </div>
-
-        <div class="section new_entry">
-            ＋ Add entry
+            <div class="section active new-entry-view">
+                <i class="fas fa-plus-square"></i> New entry
+            </div>
+            <div class="section inactive new-entry-view">
+                <i class="fas fa-plus-square"></i> New entry
+            </div>
         </div>
 
     </div>
 
-    <script src="js/scripts.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+
+    <script>
+
+        /* EVENT LISTENERS */
+
+        /* Event buttons directional hover effect */
+
+        $(".event").mouseenter(function(event) {
+
+            var mouseY = event.pageY;
+            var div = $(this);
+
+            div.removeClass("slide-down-out");
+            div.removeClass("slide-up-out");
+
+            var distToTop = Math.abs(div.offset().top - mouseY);
+            var distToBot = Math.abs(div.offset().top + div.outerHeight() - mouseY);
+
+            if (distToTop < distToBot) {
+                div.addClass("slide-down-in");
+            } else {
+                div.addClass("slide-up-in");
+            }
+
+        });
+
+        $(".event").mouseleave(function(event) {
+
+            var mouseY = event.pageY;
+            var div = $(this);
+
+            div.removeClass("slide-down-in");
+            div.removeClass("slide-up-in");
+
+            if (mouseY > div.offset().top) {
+                div.addClass("slide-down-out");
+            } else {
+                div.addClass("slide-up-out");
+            }
+
+        });
+
+        /* New entry button directional hover effect */
+
+        $("#new-entry-button").mouseenter(function(event) {
+            var mouseY = event.pageY;
+            var div = $(this);
+
+            div.removeClass("from-above");
+            div.removeClass("from-below");
+            div.removeClass("hidden-transition");
+
+            if ((mouseY - div.offset().top) < (div.offset().top + 172 - mouseY)) {
+                // Mouse is closer to top of div
+                div.addClass("from-above");
+            } else {
+                // Mouse is closer to bottom of div
+                div.addClass("from-below");
+            }
+
+        });
+
+        $("#new-entry-button").mouseleave(function(event) {
+            var mouseY = event.pageY;
+            var div = $(this);
+
+            div.removeClass("to-above");
+            div.removeClass("to-below");
+
+            if ((mouseY - div.offset().top) < (div.offset().top + 172 - mouseY)) {
+                // Mouse is closer to top of div
+                div.addClass("to-above");
+            } else {
+                // Mouse is closer to bottom of div
+                div.addClass("to-below");
+            }
+
+            function restoreView() {
+                div.removeClass("to-above");
+                div.removeClass("to-below");
+                div.addClass("from-above");
+                div.addClass("hidden-transition");
+            }
+
+            setTimeout(restoreView, 200)
+
+        });
+
+        /* UI */
+
+        /**
+         *  Display a modal message with the defined text and actions
+         */
+        function showMessage(titleText, msgText, pButtonText, nButtonText, pButtonAction, nButtonAction) {
+            $("#curtain").addClass("visible");
+            $("#modal-title").html(titleText);
+            $("#modal-message").html(msgText);
+            $("#positive-button").html(pButtonText);
+            $("#negative-button").html(nButtonText);
+        }
+
+        /**
+         *  Hide current modal message
+         */
+        function hideMessage() {
+            $("#curtain").removeClass("visible");
+        }
+
+        function promptRemove() {
+            showMessage("Caution",
+                "Are you sure you want to permanently remove this event?",
+                "Remove event",
+                "Cancel",
+                "",
+                ""
+            )
+        }
+
+        /* FUNCTIONALITY */
+
+        /**
+         *  Remove event with specified id
+         */
+        function removeEvent(id) {
+
+        }
+
+    </script>
+
 </body>
 </html>

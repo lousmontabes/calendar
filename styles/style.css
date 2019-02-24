@@ -1,0 +1,203 @@
+/* *  STYLESHEET
+ *
+ * */
+@font-face {
+  font-family: League Spartan;
+  src: url("../fonts/LeagueSpartan-Bold.otf") format("opentype");
+}
+body {
+  background: #f0f0f0;
+  margin: 0;
+  font-family: "Open Sans";
+}
+
+.area {
+  padding: 2em;
+  height: 100vh;
+  min-width: 40em;
+  width: 75vw;
+  max-width: 50em;
+  margin: 0 auto;
+}
+.area h1 {
+  margin: 0;
+  font-family: "Varela Round";
+}
+.area h2 {
+  margin: 0;
+  font-family: "Open Sans";
+  color: #c896d7;
+  margin-bottom: 0.5em;
+  font-weight: normal;
+}
+
+.section {
+  padding: 2em;
+}
+.section.title {
+  padding: 0;
+  margin: 2em;
+  transition: 0.1s;
+  cursor: pointer;
+}
+
+.title:hover {
+  color: #c896d7;
+}
+
+.entry {
+  transition: 0.2s;
+  margin-bottom: 2em;
+  background: white;
+  border-radius: 0.25em;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.entry.today {
+  border: 1px solid lightgrey;
+}
+.entry:hover {
+  transform: translateY(-3px);
+  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.event {
+  font-size: 22px;
+  padding: 0.5em 0;
+  border-bottom: 1px solid #f0f0f0;
+  color: #323232;
+}
+.event.last {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.event:hover .info {
+  color: #c896d7;
+}
+.event:hover .buttons {
+  opacity: 1;
+  transform: translateY(0);
+}
+.event .comments {
+  color: #b4b4b4;
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 0.5em;
+}
+.event .buttons {
+  float: right;
+  opacity: 0;
+  background: white;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.event.from-below .buttons {
+  transform: translateY(10px);
+}
+.event.from-above .buttons {
+  transform: translateY(-10px);
+}
+
+.new_entry {
+  transition: 0.2s;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid lightgrey;
+  text-align: center;
+  box-shadow: none;
+  color: grey;
+  margin-bottom: 3em;
+}
+.new_entry:hover {
+  border-color: rgba(200, 150, 215, 0.5);
+  color: #c896d7;
+}
+
+i {
+  transition: 0.1s;
+  padding: 0.1em;
+  opacity: 0.9;
+}
+i:hover {
+  color: #c896d7;
+}
+i.caution:hover {
+  color: #eb4d4b;
+}
+
+.flying {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  z-index: 999;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.centered {
+  align-self: center;
+  margin: 0 auto;
+}
+
+.modal {
+  background: white;
+  min-width: 10em;
+  min-height: 5em;
+  border-radius: 0.25em;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: "Varela Round";
+  font-size: 18px;
+}
+.modal .title {
+  color: white;
+  background: #eb4d4b;
+  font-weight: bold;
+  display: none;
+}
+.modal .section {
+  margin: 0;
+  padding: 1.5em 2em;
+}
+.modal .section.buttons {
+  padding: 0 2em;
+  margin-bottom: 1em;
+}
+.modal .button {
+  padding: 0.5em 1em;
+  margin-right: 0.5em;
+  display: inline-block;
+  border-radius: 0.25em;
+}
+
+.button {
+  transition: 0.2s;
+  cursor: pointer;
+}
+.button:hover {
+  transform: scale(1.05);
+}
+.button:active {
+  transition: 0.05s;
+  transform: scale(0.95);
+}
+.button.caution {
+  background: #eb4d4b;
+  color: white;
+}
+.button.grey {
+  background: lightgrey;
+}
+
+#curtain {
+  display: none;
+}
+#curtain.visible {
+  display: block;
+}
+#curtain.visible .flying {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=style.css.map */
