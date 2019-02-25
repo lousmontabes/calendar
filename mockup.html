@@ -40,7 +40,7 @@
     </div>
 
     <div class="header">
-        <div class="area">
+        <div class="area title">
             <h1>Calendari de migracions</h1>
         </div>
     </div>
@@ -87,20 +87,24 @@
             </div>
         </div>
 
+        <div class="section entry today">
+            <h2><b>Tomorrow</b></h2>
+            <div class="event last">
+                <div class="buttons alt">
+                    <i class="far fa-edit"></i>
+                    <i class="far fa-trash-alt caution" onclick="promptRemove()"></i>
+                </div>
+                <div class="info">
+                    12:00 - Vitor
+                    <div class="comments">
+                        Ordinador del taulell biblioteca GiH<br />Clonar amb imatge de biblioteques
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="new-entry from-below" id="new-entry-button">
-            <div class="section inactive new-entry-view">
-                <i class="fas fa-plus-square"></i> New entry
-            </div>
-            <div class="section active new-entry-view">
-                <i class="fas fa-plus-square"></i> New entry
-            </div>
-            <div class="section inactive new-entry-view">
-                <i class="fas fa-plus-square"></i> New entry
-            </div>
-            <div class="section active new-entry-view">
-                <i class="fas fa-plus-square"></i> New entry
-            </div>
-            <div class="section inactive new-entry-view">
+            <div class="section new-entry-view">
                 <i class="fas fa-plus-square"></i> New entry
             </div>
         </div>
@@ -150,52 +154,6 @@
             } else {
                 div.addClass("slide-up-out");
             }
-
-        });
-
-        /* New entry button directional hover effect */
-
-        $("#new-entry-button").mouseenter(function(event) {
-            var mouseY = event.pageY;
-            var div = $(this);
-
-            div.removeClass("from-above");
-            div.removeClass("from-below");
-            div.removeClass("hidden-transition");
-
-            if ((mouseY - div.offset().top) < (div.offset().top + 172 - mouseY)) {
-                // Mouse is closer to top of div
-                div.addClass("from-above");
-            } else {
-                // Mouse is closer to bottom of div
-                div.addClass("from-below");
-            }
-
-        });
-
-        $("#new-entry-button").mouseleave(function(event) {
-            var mouseY = event.pageY;
-            var div = $(this);
-
-            div.removeClass("to-above");
-            div.removeClass("to-below");
-
-            if ((mouseY - div.offset().top) < (div.offset().top + 172 - mouseY)) {
-                // Mouse is closer to top of div
-                div.addClass("to-above");
-            } else {
-                // Mouse is closer to bottom of div
-                div.addClass("to-below");
-            }
-
-            function restoreView() {
-                div.removeClass("to-above");
-                div.removeClass("to-below");
-                div.addClass("from-above");
-                div.addClass("hidden-transition");
-            }
-
-            setTimeout(restoreView, 200)
 
         });
 

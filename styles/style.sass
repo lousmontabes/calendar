@@ -52,15 +52,13 @@ body
 
 .header
   background: $header-background-color
-  color: #dff9fb
   padding: 2em
+  color: #dff9fb
   box-shadow: 0px 0px 15px $shadow-color
 
 .area
   padding: 2em
   min-width: 40em
-  width: 75vw
-  max-width: 50em
   margin: 0 auto
   h1
     margin: 0
@@ -84,7 +82,10 @@ body
   color: $accent-color
 
 .entry
+  display: inline-block
   transition: 0.2s
+  margin: 0 1em
+  vertical-align: top
   margin-bottom: 2em
   background: white
   border-radius: 0.25em
@@ -134,7 +135,6 @@ body
       transform: translateY(0)
 
 .new-entry
-  transition: 0.2s
   cursor: pointer
   background: transparent
   border-radius: .25em
@@ -150,30 +150,8 @@ body
   .new-entry-view
     height: 100px
     transition: .2s
-  &.hidden-transition
-    .new-entry-view
-      transition: 0s
-  .active
-    background: $accent-color
-    color: white
-  &.from-above
-    .new-entry-view
-      transform: translateY(-172px * 2)
-    &:hover
-      .new-entry-view
-        transform: translateY(-172px)
-  &.from-below
-    .new-entry-view
-      transform: translateY(-172px * 2)
-    &:hover
-      .new-entry-view
-        transform: translateY(-172px * 3)
-  &.to-above
-    .new-entry-view
-      transform: translateY(-172px * 4)
-  &.to-below
-    .new-entry-view
-      transform: translateY(0)
+  &:hover
+    color: $header-background-color
 
 i
   padding: .1em
