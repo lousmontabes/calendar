@@ -59,14 +59,14 @@ $body-font: "Open Sans"
   100%
     transform: scale(0.95)
 
-@keyframes opacityIn
+@keyframes fadeIn
   0%
     opacity: 0
 
   100%
     opacity: 1
 
-@keyframes opacityOut
+@keyframes fadeOut
   0%
     opacity: 1
 
@@ -126,6 +126,7 @@ body
     box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1)
 
 .event
+  transition: .2s
   font-size: 22px
   padding: 0.5em 0
   border-bottom: 1px solid #f0f0f0
@@ -254,7 +255,7 @@ body
 #curtain
   visibility: hidden
   .flying
-    animation: opacityOut .1s ease-in-out
+    animation: fadeOut .1s ease-in-out
     animation-fill-mode: forwards
   .modal
     animation: zoomOut .1s ease-in
@@ -262,7 +263,19 @@ body
   &.visible
     visibility: visible
     .flying
-      animation: opacityIn .1s ease-in-out
+      animation: fadeIn .1s ease-in-out
       animation-fill-mode: forwards
     .modal
       animation: zoomIn .1s ease-out
+
+.fade-in
+  animation: fadeIn .1s ease-in-out
+  animation-fill-mode: forwards
+
+.fade-out
+  animation: fadeOut .1s ease-in-out
+  animation-fill-mode: forwards
+
+.delayed
+  animation-delay: .15s
+  transition-delay: .15s
