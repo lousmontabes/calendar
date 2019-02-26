@@ -45,6 +45,34 @@ $body-font: "Open Sans"
   100%
     transform: translateY(-10px)
 
+@keyframes zoomIn
+  0%
+    transform: scale(0.95)
+
+  100%
+    transform: scale(1)
+
+@keyframes zoomOut
+  0%
+    transform: scale(1)
+
+  100%
+    transform: scale(0.95)
+
+@keyframes opacityIn
+  0%
+    opacity: 0
+
+  100%
+    opacity: 1
+
+@keyframes opacityOut
+  0%
+    opacity: 1
+
+  100%
+    opacity: 0
+
 body
   background: #f0f0f0
   margin: 0
@@ -90,6 +118,7 @@ body
   background: white
   border-radius: 0.25em
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1)
+  width: 16.5em
   &.today
     border: 1px solid lightgrey
   &:hover
@@ -106,33 +135,42 @@ body
     font-size: 16px
     font-weight: normal
     margin-top: 0.5em
+    overflow-wrap: break-word
   .buttons
     float: right
     opacity: 0
     background: white
     transition: opacity .2s
     cursor: pointer
-  &.slide-up-in .buttons
-    animation: slideUpIn .2s linear
-  &.slide-down-in .buttons
-    animation: slideDownIn .2s linear
-  &.slide-up-out .buttons
-    animation: slideUpOut .2s linear
-  &.slide-down-out .buttons
-    animation: slideDownOut .2s linear
-  i
-    transition: .1s
-    &:hover
-      color: $accent-color
   &.last
     border-bottom: none
     padding-bottom: 0
-  &:hover
-    .info
-      color: $accent-color
-    .buttons
-      opacity: 1
-      transform: translateY(0)
+
+.entry
+  .event
+    &.slide-up-in .buttons
+      animation: slideUpIn .2s linear
+    &.slide-down-in .buttons
+      animation: slideDownIn .2s linear
+    &.slide-up-out .buttons
+      animation: slideUpOut .2s linear
+    &.slide-down-out .buttons
+      animation: slideDownOut .2s linear
+    i
+      transition: .1s
+      padding: .1em
+      opacity: .9
+      &:hover
+        color: $accent-color
+      &.caution
+        &:hover
+          color: $caution-color
+    &:hover
+      .info
+        color: $accent-color
+      .buttons
+        opacity: 1
+        transform: translateY(0)
 
 .new-entry
   cursor: pointer
@@ -153,13 +191,6 @@ body
   &:hover
     color: $header-background-color
 
-i
-  padding: .1em
-  opacity: .9
-  &.caution
-    &:hover
-      color: $caution-color
-
 .flying
   position: fixed
   width: 100vw
@@ -177,6 +208,7 @@ i
 .modal
   background: white
   min-width: 10em
+  max-width: 33em
   min-height: 5em
   border-radius: 0.25em
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1)
@@ -199,6 +231,9 @@ i
     margin-right: 0.5em
     display: inline-block
     border-radius: 0.25em
+  .event
+    font-family: $body-font
+    margin-top: .5em
 
 .button
   transition: 0.1s
@@ -217,8 +252,17 @@ i
     background: lightgrey
 
 #curtain
-  display: none
+  visibility: hidden
+  .flying
+    animation: opacityOut .1s ease-in-out
+    animation-fill-mode: forwards
+  .modal
+    animation: zoomOut .1s ease-in
+    animation-fill-mode: forwards
   &.visible
-    display: block
+    visibility: visible
     .flying
-      opacity: 1
+      animation: opacityIn .1s ease-in-out
+      animation-fill-mode: forwards
+    .modal
+      animation: zoomIn .1s ease-out

@@ -18,7 +18,7 @@
 
 <body>
 
-    <div id="curtain">
+    <div id="curtain" onclick="hideMessage()">
         <div class="flying">
             <div class="modal centered" id="modal">
                 <div class="section title" id="modal-title">
@@ -49,22 +49,22 @@
 
         <div class="section entry today">
             <h2><b>Today</b></h2>
-            <div class="event">
+            <div class="event" id="event1">
                 <div class="buttons down">
                     <i class="far fa-edit"></i>
-                    <i class="far fa-trash-alt caution" onclick="promptRemove()"></i>
+                    <i class="far fa-trash-alt caution" onclick="promptRemove('event1')"></i>
                 </div>
                 <div class="info">
                     10:00 - Juice
                     <div class="comments">
-                        Cal copiar dades de l'usuari.<br />Avisar a secretaria
+                        Cal copiar dades de l'usuari. Avisar a secretaria
                     </div>
                 </div>
             </div>
-            <div class="event">
+            <div class="event" id="event2">
                 <div class="buttons alt">
                     <i class="far fa-edit"></i>
-                    <i class="far fa-trash-alt caution" onclick="promptRemove()"></i>
+                    <i class="far fa-trash-alt caution" onclick="promptRemove('event2')"></i>
                 </div>
                 <div class="info">
                     11:00 - Pedro
@@ -73,15 +73,15 @@
                     </div>
                 </div>
             </div>
-            <div class="event last">
+            <div class="event last" id="event3">
                 <div class="buttons alt">
                     <i class="far fa-edit"></i>
-                    <i class="far fa-trash-alt caution" onclick="promptRemove()"></i>
+                    <i class="far fa-trash-alt caution" onclick="promptRemove('event3')"></i>
                 </div>
                 <div class="info">
                     12:00 - Vitor
                     <div class="comments">
-                        Ordinador del taulell biblioteca GiH<br />Clonar amb imatge de biblioteques
+                        La usuària vol que s'instal·li Office 2007, Skype, OpenOffice, Adobe CC, i tots els programes necessaris per a l'estudi de l'arquitectura aquífera.
                     </div>
                 </div>
             </div>
@@ -89,15 +89,15 @@
 
         <div class="section entry today">
             <h2><b>Tomorrow</b></h2>
-            <div class="event last">
+            <div class="event last" id="event4">
                 <div class="buttons alt">
                     <i class="far fa-edit"></i>
-                    <i class="far fa-trash-alt caution" onclick="promptRemove()"></i>
+                    <i class="far fa-trash-alt caution" onclick="promptRemove('event4')"></i>
                 </div>
                 <div class="info">
                     12:00 - Vitor
                     <div class="comments">
-                        Ordinador del taulell biblioteca GiH<br />Clonar amb imatge de biblioteques
+                        Ordinador del taulell biblioteca GiH. Clonar amb imatge de biblioteques
                     </div>
                 </div>
             </div>
@@ -157,6 +157,10 @@
 
         });
 
+        $("#modal").click(function(event) {
+            event.stopPropagation();
+        });
+
         /* UI */
 
         /**
@@ -177,9 +181,13 @@
             $("#curtain").removeClass("visible");
         }
 
-        function promptRemove() {
+        function promptRemove(eventId) {
+
+            var messageBody = "Are you sure you want to permanently remove this event?";
+            messageBody += "<div class='event last'>" + $("#" + eventId).html() + "</div>";
+
             showMessage("Caution",
-                "Are you sure you want to permanently remove this event?",
+                messageBody,
                 "Remove event",
                 "Cancel",
                 "",
