@@ -183,12 +183,14 @@
             $("#modal-message").html(msgText);
 
             pButton.html(pButtonText);
+            pButton.off();
             pButton.click(function() {
                 pButtonAction(pButtonActionParams);
                 hideMessage();
             });
 
             nButton.html(nButtonText);
+            nButton.off();
             nButton.click(function() {
                 nButtonAction(nButtonActionParams);
                 hideMessage();
@@ -199,6 +201,18 @@
          *  Hide current modal message
          */
         function hideMessage() {
+
+            var pButton = $("#positive-button");
+            var nButton = $("#negative-button");
+
+            pButton.click(function() {
+                doNothing();
+            });
+
+            nButton.click(function() {
+                doNothing();
+            });
+
             $("#curtain").removeClass("visible");
         }
 
@@ -206,10 +220,20 @@
          *  Fade out and remove specified event view
          */
         function removeEventView(eventId) {
+
+            console.log(eventId);
+
             var eventView = $("#" + eventId);
-            eventView.css("margin-top", -eventView.outerHeight());
-            eventView.addClass("fade-out delayed");
-            eventView.addClass("hidden");
+
+            eventView.addClass("delete-item delayed");
+
+            function hideView() {
+                eventView.addClass("hidden");
+                eventView.css("margin-top", -eventView.outerHeight());
+            }
+
+            setTimeout(hideView, 250);
+
         }
 
         /* UTILITY */
