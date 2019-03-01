@@ -341,6 +341,7 @@
             var pButton = $("#positive-button");
             var nButton = $("#negative-button");
 
+            $("body").addClass("no-scroll");
             $("#curtain").addClass("visible");
             $("#modal-title").html(titleText);
             $("#modal-message").html(msgText);
@@ -383,6 +384,7 @@
             });
 
             $("#curtain").removeClass("visible");
+            $("body").removeClass("no-scroll");
         }
 
         /**
