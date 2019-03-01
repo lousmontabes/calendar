@@ -18,6 +18,140 @@
 
 <body>
 
+    <div class="template" id="new-event-form">
+
+        <!-- <form>
+            Hour:
+            <div class="hour-selection">
+                <div class="hour-bubble">
+                    00
+                </div>
+                <div class="hour-bubble">
+                    01
+                </div>
+                <div class="hour-bubble">
+                    02
+                </div>
+                <div class="hour-bubble">
+                    03
+                </div>
+                <div class="hour-bubble">
+                    04
+                </div>
+                <div class="hour-bubble">
+                    05
+                </div>
+                <div class="hour-bubble">
+                    06
+                </div>
+                <div class="hour-bubble">
+                    07
+                </div>
+                <div class="hour-bubble">
+                    08
+                </div>
+                <div class="hour-bubble">
+                    09
+                </div>
+                <div class="hour-bubble">
+                    10
+                </div>
+                <div class="hour-bubble">
+                    11
+                </div>
+            </div>
+            <div class="hour-selection">
+                <div class="hour-bubble">
+                    12
+                </div>
+                <div class="hour-bubble">
+                    13
+                </div>
+                <div class="hour-bubble">
+                    14
+                </div>
+                <div class="hour-bubble">
+                    15
+                </div>
+                <div class="hour-bubble">
+                    16
+                </div>
+                <div class="hour-bubble">
+                    17
+                </div>
+                <div class="hour-bubble">
+                    18
+                </div>
+                <div class="hour-bubble">
+                    19
+                </div>
+                <div class="hour-bubble">
+                    20
+                </div>
+                <div class="hour-bubble">
+                    21
+                </div>
+                <div class="hour-bubble">
+                    22
+                </div>
+                <div class="hour-bubble">
+                    23
+                </div>
+            </div>
+            Minute:
+            <div class="hour-selection">
+                <div class="hour-bubble">
+                    00
+                </div>
+                <div class="hour-bubble">
+                    05
+                </div>
+                <div class="hour-bubble">
+                    10
+                </div>
+                <div class="hour-bubble">
+                    15
+                </div>
+                <div class="hour-bubble">
+                    20
+                </div>
+                <div class="hour-bubble">
+                    25
+                </div>
+                <div class="hour-bubble">
+                    30
+                </div>
+                <div class="hour-bubble">
+                    35
+                </div>
+                <div class="hour-bubble">
+                    40
+                </div>
+                <div class="hour-bubble">
+                    45
+                </div>
+                <div class="hour-bubble">
+                    50
+                </div>
+                <div class="hour-bubble">
+                    55
+                </div>
+            </div>
+
+            <input type="text" class="title" placeholder="Title of your event" spellcheck="false" />
+
+            <input type="text" class="comments" placeholder="Enter additional comments (optional)" spellcheck="false"/>
+        </form> -->
+
+        <form>
+            <div class="time-title">
+                <input type="time" class="time "/>
+                <input type="text" class="title" placeholder="Title of your event" spellcheck="false" />
+            </div>
+            <input type="text" class="comments" placeholder="Enter additional comments (optional)" spellcheck="false"/>
+        </form>
+    </div>
+
     <div id="curtain" onclick="hideMessage()">
         <div class="flying">
             <div class="modal centered" id="modal">
@@ -28,10 +162,10 @@
                     Are you sure you want to permanently remove this event?
                 </div>
                 <div class="section buttons">
-                    <div class="button caution" id="positive-button">
+                    <div class="button confirm" id="positive-button">
                         Remove event
                     </div>
-                    <div class="button grey" id="negative-button">
+                    <div class="button cancel" id="negative-button">
                         Cancel
                     </div>
                 </div>
@@ -47,8 +181,10 @@
 
     <div class="area">
 
-        <div class="section entry today">
+        <div class="section entry today" id="entry1">
+
             <h2><b>Today</b></h2>
+
             <div class="event" id="event1">
                 <div class="buttons down">
                     <i class="far fa-edit"></i>
@@ -61,6 +197,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="event" id="event2">
                 <div class="buttons alt">
                     <i class="far fa-edit"></i>
@@ -73,6 +210,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="event last" id="event3">
                 <div class="buttons alt">
                     <i class="far fa-edit"></i>
@@ -85,10 +223,17 @@
                     </div>
                 </div>
             </div>
+
+            <div class="add-event" onclick="promptAdd('entry1')">
+                <i class="fas fa-plus-square"></i> New event
+            </div>
+
         </div>
 
-        <div class="section entry today">
+        <div class="section entry today" id="entry2">
+
             <h2><b>Tomorrow</b></h2>
+
             <div class="event last" id="event4">
                 <div class="buttons alt">
                     <i class="far fa-edit"></i>
@@ -101,9 +246,14 @@
                     </div>
                 </div>
             </div>
+
+            <div class="add-event" onclick="promptAdd('entry2')">
+                <i class="fas fa-plus-square"></i> New event
+            </div>
+
         </div>
 
-        <div class="new-entry from-below" id="new-entry-button">
+        <div class="new-entry" id="new-entry-button">
             <div class="section new-entry-view">
                 <i class="fas fa-plus-square"></i> New entry
             </div>
@@ -117,6 +267,17 @@
       crossorigin="anonymous"></script>
 
     <script>
+
+        var MessageType = {
+            NEUTRAL: 1,
+            NEGATIVE: 2,
+            POSITIVE: 3,
+            assignedClass: {
+                1: "neutral",
+                2: "negative",
+                3: "positive"
+            }
+        };
 
         /* EVENT LISTENERS */
 
@@ -166,7 +327,9 @@
         /**
          *  Display a modal message with the defined text and actions
          */
-        function showMessage(titleText,
+        function showMessage(
+            type,
+            titleText,
             msgText,
             pButtonText,
             nButtonText,
@@ -181,6 +344,12 @@
             $("#curtain").addClass("visible");
             $("#modal-title").html(titleText);
             $("#modal-message").html(msgText);
+
+            $("#modal").removeClass("neutral");
+            $("#modal").removeClass("negative");
+            $("#modal").removeClass("positive");
+
+            $("#modal").addClass(MessageType.assignedClass[type]);
 
             pButton.html(pButtonText);
             pButton.off();
@@ -221,8 +390,6 @@
          */
         function removeEventView(eventId) {
 
-            console.log(eventId);
-
             var eventView = $("#" + eventId);
 
             eventView.addClass("delete-item delayed");
@@ -243,16 +410,39 @@
          */
         function promptRemove(eventId) {
 
-            var messageBody = "Are you sure you want to permanently remove this event?";
-            messageBody += "<div class='event last'>" + $("#" + eventId).html() + "</div>";
+            var messageTitle = "Are you sure you want to permanently remove this event?";
+            var messageBody = "<div class='event last'>" + $("#" + eventId).html() + "</div>";
 
-            showMessage("Caution",
+            showMessage(
+                MessageType.NEGATIVE,
+                messageTitle,
                 messageBody,
                 "Remove event",
                 "Cancel",
                 removeEventView,
                 doNothing,
                 eventId,
+                null
+            )
+        }
+
+        /**
+         *  Display modal message asking for new event data
+         */
+        function promptAdd(entryId) {
+
+            var messageTitle = "Enter event information";
+            var messageBody = $("#new-event-form").html();
+
+            showMessage(
+                MessageType.POSITIVE,
+                messageTitle,
+                messageBody,
+                "Add event",
+                "Cancel",
+                doNothing,
+                doNothing,
+                null,
                 null
             )
         }

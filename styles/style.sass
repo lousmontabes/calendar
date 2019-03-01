@@ -3,7 +3,8 @@ $background-color: rgb(240, 240, 240)
 $header-background-color: #30336b
 $accent-color: #95afc0
 $shadow-color: rgba(0, 0, 0, 0.1)
-$caution-color: #eb4d4b
+$negative-color: #eb4d4b
+$positive-color: #6ab04c
 
 // Fonts
 $title-font: "Varela Round"
@@ -113,10 +114,6 @@ body
     padding: 0
     margin: 2em
     transition: 0.1s
-    cursor: pointer
-
-.title:hover
-  color: $accent-color
 
 .entry
   display: inline-block
@@ -128,6 +125,7 @@ body
   border-radius: 0.25em
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1)
   width: 16.5em
+  padding-bottom: 0
   &.today
     border: 1px solid lightgrey
   &:hover
@@ -140,12 +138,6 @@ body
   padding: 0.5em 0
   border-bottom: 1px solid #f0f0f0
   color: #323232
-  .comments
-    color: #b4b4b4
-    font-size: 16px
-    font-weight: normal
-    margin-top: 0.5em
-    overflow-wrap: break-word
   .buttons
     float: right
     opacity: 0
@@ -155,6 +147,13 @@ body
   &.last
     border-bottom: none
     padding-bottom: 0
+
+.comments
+  color: #b4b4b4
+  font-size: 16px
+  font-weight: normal
+  margin-top: 0.5em
+  overflow-wrap: break-word
 
 .entry
   .event
@@ -174,13 +173,25 @@ body
         color: $accent-color
       &.caution
         &:hover
-          color: $caution-color
+          color: $negative-color
     &:hover
       .info
         color: $accent-color
       .buttons
         opacity: 1
         transform: translateY(0)
+  .add-event
+    transition: .1s
+    cursor: pointer
+    padding: 1.5em 0 2em 0
+    font-size: 18px
+    font-family: $ui-font
+    opacity: .5
+    i
+      margin-right: .5em
+    &:hover
+      opacity: 1
+      color: $accent-color
 
 .new-entry
   cursor: pointer
@@ -225,25 +236,58 @@ body
   overflow: hidden
   font-family: $ui-font
   font-size: 18px
-  .title
-    color: white
-    background: #eb4d4b
-    font-weight: bold
-    display: none
+  padding: 1.5em 2em
   .section
     margin: 0
-    padding: 1.5em 2em
-    &.buttons
-      padding: 0 2em
-      margin-bottom: 1.5em
+    padding: 0
+    &.message
+      padding: .5em 0
+      padding-bottom: 1.5em
   .button
     padding: 0.5em 1em
     margin-right: 0.5em
     display: inline-block
     border-radius: 0.25em
+  .time-title
+    display: flex
+    align-items: center
+  input
+    font-family: "Open Sans"
+    border: none
+    font-size: 22px
+    padding: .2em
+    &:focus
+      outline: none
+    &.time
+      flex-grow: 1
+    &.title
+      flex-grow: 5
+    &.comments
+      font-size: 18px
+      width: 100%
+    &:hover
+      &::placeholder
+        opacity: .75
+    &:focus
+      &::placeholder
+        opacity: 1
+    &::placeholder
+      transition: .1s
+      opacity: .5
   .event
     font-family: $body-font
-    margin-top: .5em
+  &.neutral
+    .button.confirm
+      background: $accent-color
+      color: white
+  &.negative
+    .button.confirm
+      background: $negative-color
+      color: white
+  &.positive
+    .button.confirm
+      background: $positive-color
+      color: white
 
 .button
   transition: 0.1s
@@ -255,10 +299,7 @@ body
   &:active
     transition: .05s
     transform: scale(0.95)
-  &.caution
-    background: #eb4d4b
-    color: white
-  &.grey
+  &.cancel
     background: lightgrey
 
 #curtain
@@ -295,3 +336,17 @@ body
 
 .hidden
   visibility: hidden
+
+.template
+  display: none
+
+.hour-selection
+  margin: .5em 0
+
+.hour-bubble
+  display: inline-block
+  font-size: 14px
+  border: 1px solid lightgrey
+  padding: .5em
+  &:hover
+    background: lightgrey
