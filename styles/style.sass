@@ -1,6 +1,7 @@
 // Colors
 $background-color: rgb(240, 240, 240)
 $header-background-color: #30336b
+$header-background-color-bright: #3e428c
 $accent-color: #95afc0
 $shadow-color: rgba(0, 0, 0, 0.1)
 $negative-color: #eb4d4b
@@ -358,17 +359,44 @@ input[type="time"]::-webkit-clear-button
   overflow: hidden
 
 .bubble
+  background: #30336b
   color: white
   position: absolute
-  background: $header-background-color
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1)
-  min-width: 5em
   text-align: center
   top: 45vh
   left: 45vw
   border-radius: 4px
+  border: 2px solid $header-background-color
+  font-family: $ui-font
   .option
+    background: $header-background-color
     padding: .5em 2em
-    opacity: .75
+    cursor: pointer
     &:hover
-      opacity: 1
+      background: $header-background-color-bright
+    &.selected
+      background: $accent-color
+      color: $header-background-color
+  .column
+    height: 14em
+    overflow-y: scroll
+    display: inline-block
+    &.left
+      border-right: 1px solid rgba(255, 255, 255, 0.1)
+    &::-webkit-scrollbar
+      display: none
+    .spacer
+      height: 44%
+  &:after
+    content: ''
+    position: absolute
+    top: 0
+    left: 50%
+    width: 0
+    height: 0
+    border: 7px solid transparent
+    border-bottom-color: $header-background-color
+    border-top: 0
+    margin-left: -7px
+    margin-top: -7px

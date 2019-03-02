@@ -1,0 +1,205 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Calendar</title>
+    <meta name="description" content="Calendar">
+    <meta name="author" content="Lluís Montabes">
+
+    <link rel="stylesheet" href="styles/style.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <style>
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <form>
+        <input type="time" id="time-input" />
+    </form>
+
+    <div id="time-picker-template">
+        <div class="bubble" id="time-picker">
+            <div class="time-picker">
+                <div class="column left">
+                    <div class="spacer">
+
+                    </div>
+                    <div class="option">
+                        0
+                    </div>
+                    <div class="option">
+                        1
+                    </div>
+                    <div class="option">
+                        2
+                    </div>
+                    <div class="option">
+                        3
+                    </div>
+                    <div class="option">
+                        4
+                    </div>
+                    <div class="option">
+                        5
+                    </div>
+                    <div class="option">
+                        6
+                    </div>
+                    <div class="option">
+                        7
+                    </div>
+                    <div class="option">
+                        8
+                    </div>
+                    <div class="option">
+                        9
+                    </div>
+                    <div class="option">
+                        10
+                    </div>
+                    <div class="option">
+                        11
+                    </div>
+                    <div class="option">
+                        12
+                    </div>
+                    <div class="option">
+                        13
+                    </div>
+                    <div class="option">
+                        14
+                    </div>
+                    <div class="option">
+                        15
+                    </div>
+                    <div class="option">
+                        16
+                    </div>
+                    <div class="option">
+                        17
+                    </div>
+                    <div class="option">
+                        18
+                    </div>
+                    <div class="option">
+                        19
+                    </div>
+                    <div class="option">
+                        20
+                    </div>
+                    <div class="option">
+                        21
+                    </div>
+                    <div class="option">
+                        22
+                    </div>
+                    <div class="option">
+                        23
+                    </div>
+                    <div class="spacer">
+
+                    </div>
+                </div><div class="column">
+                    <div class="spacer">
+
+                    </div>
+                    <div class="option">
+                        00
+                    </div>
+                    <div class="option">
+                        05
+                    </div>
+                    <div class="option">
+                        10
+                    </div>
+                    <div class="option">
+                        15
+                    </div>
+                    <div class="option">
+                        20
+                    </div>
+                    <div class="option">
+                        25
+                    </div>
+                    <div class="option">
+                        30
+                    </div>
+                    <div class="option">
+                        35
+                    </div>
+                    <div class="option">
+                        40
+                    </div>
+                    <div class="option">
+                        45
+                    </div>
+                    <div class="option">
+                        50
+                    </div>
+                    <div class="option">
+                        55
+                    </div>
+                    <div class="spacer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+
+    <script>
+
+        class TimePicker {
+
+            constructor(formInput) {
+                this.input = formInput;
+                this.view = $("#time-picker");
+            }
+
+            show() {
+                this.view.css("left", this.input.position().left);
+                this.view.css("top", this.input.position().top);
+                this.view.addClass("zoomIn fadeIn");
+            }
+        }
+
+        $(".option").click(function(e) {
+
+            var div = $(this);
+            var column = div.parent();
+            var bubble = column.parent();
+
+            column.find(".option").removeClass("selected");
+            div.addClass("selected");
+
+            $(column).animate({
+                scrollTop: column.scrollTop() + div.position().top - bubble.innerHeight() / 2 + div.outerHeight() / 2
+            }, 200);
+
+        })
+
+        $("input[type='time']").click(function(e) {
+            console.log("hi");
+            var timePicker = new TimePicker($("this"));
+            timePicker.show();
+        });
+
+    </script>
+
+</body>
