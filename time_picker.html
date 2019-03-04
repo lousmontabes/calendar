@@ -16,7 +16,11 @@
 
     <style>
 
-
+        #time-input {
+            position: absolute;
+            left: 150px;
+            top: 150px;
+        }
 
     </style>
 
@@ -173,9 +177,10 @@
             }
 
             show() {
-                this.view.css("left", this.input.position().left);
-                this.view.css("top", this.input.position().top);
-                this.view.addClass("zoomIn fadeIn");
+                this.view.css("left", this.input.position().left + this.input.outerWidth() / 2 - this.view.outerWidth() / 2);
+                this.view.css("top", this.input.position().top + this.input.outerHeight() + 10);
+                this.view.removeClass("fade-out");
+                this.view.addClass("fade-in");
             }
         }
 
@@ -195,9 +200,13 @@
         })
 
         $("input[type='time']").click(function(e) {
-            console.log("hi");
-            var timePicker = new TimePicker($("this"));
+            var timePicker = new TimePicker($(this));
             timePicker.show();
+        });
+
+        $("input[type='time']").blur(function(e) {
+            $("#time-picker").removeClass("fade-in");
+            $("#time-picker").addClass("fade-out");
         });
 
     </script>
