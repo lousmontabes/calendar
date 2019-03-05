@@ -29,138 +29,64 @@
 <body>
 
     <form>
-        <input type="time" id="time-input" />
-    </form>
+        <div class="time-input-zone">
+            <input type="time" id="time-input" />
+            <div class="bubble" id="time-picker">
+                <div class="time-picker">
+                    <div class="column left">
+                        <div class="spacer">
 
-    <div id="time-picker-template">
-        <div class="bubble" id="time-picker">
-            <div class="time-picker">
-                <div class="column left">
-                    <div class="spacer">
+                        </div>
+                        <div class="option">0</div>
+                        <div class="option">1</div>
+                        <div class="option">2</div>
+                        <div class="option">3</div>
+                        <div class="option">4</div>
+                        <div class="option">5</div>
+                        <div class="option">6</div>
+                        <div class="option">7</div>
+                        <div class="option">8</div>
+                        <div class="option">9</div>
+                        <div class="option">10</div>
+                        <div class="option">11</div>
+                        <div class="option">12</div>
+                        <div class="option">13</div>
+                        <div class="option">14</div>
+                        <div class="option">15</div>
+                        <div class="option">16</div>
+                        <div class="option">17</div>
+                        <div class="option">18</div>
+                        <div class="option">19</div>
+                        <div class="option">20</div>
+                        <div class="option">21</div>
+                        <div class="option">22</div>
+                        <div class="option">23</div>
+                        <div class="spacer">
 
-                    </div>
-                    <div class="option">
-                        0
-                    </div>
-                    <div class="option">
-                        1
-                    </div>
-                    <div class="option">
-                        2
-                    </div>
-                    <div class="option">
-                        3
-                    </div>
-                    <div class="option">
-                        4
-                    </div>
-                    <div class="option">
-                        5
-                    </div>
-                    <div class="option">
-                        6
-                    </div>
-                    <div class="option">
-                        7
-                    </div>
-                    <div class="option">
-                        8
-                    </div>
-                    <div class="option">
-                        9
-                    </div>
-                    <div class="option">
-                        10
-                    </div>
-                    <div class="option">
-                        11
-                    </div>
-                    <div class="option">
-                        12
-                    </div>
-                    <div class="option">
-                        13
-                    </div>
-                    <div class="option">
-                        14
-                    </div>
-                    <div class="option">
-                        15
-                    </div>
-                    <div class="option">
-                        16
-                    </div>
-                    <div class="option">
-                        17
-                    </div>
-                    <div class="option">
-                        18
-                    </div>
-                    <div class="option">
-                        19
-                    </div>
-                    <div class="option">
-                        20
-                    </div>
-                    <div class="option">
-                        21
-                    </div>
-                    <div class="option">
-                        22
-                    </div>
-                    <div class="option">
-                        23
-                    </div>
-                    <div class="spacer">
+                        </div>
+                    </div><div class="column">
+                        <div class="spacer">
 
-                    </div>
-                </div><div class="column">
-                    <div class="spacer">
+                        </div>
+                        <div class="option">00</div>
+                        <div class="option">05</div>
+                        <div class="option">10</div>
+                        <div class="option">15</div>
+                        <div class="option">20</div>
+                        <div class="option">25</div>
+                        <div class="option">30</div>
+                        <div class="option">35</div>
+                        <div class="option">40</div>
+                        <div class="option">45</div>
+                        <div class="option">50</div>
+                        <div class="option">55</div>
+                        <div class="spacer">
 
+                        </div>
                     </div>
-                    <div class="option">
-                        00
-                    </div>
-                    <div class="option">
-                        05
-                    </div>
-                    <div class="option">
-                        10
-                    </div>
-                    <div class="option">
-                        15
-                    </div>
-                    <div class="option">
-                        20
-                    </div>
-                    <div class="option">
-                        25
-                    </div>
-                    <div class="option">
-                        30
-                    </div>
-                    <div class="option">
-                        35
-                    </div>
-                    <div class="option">
-                        40
-                    </div>
-                    <div class="option">
-                        45
-                    </div>
-                    <div class="option">
-                        50
-                    </div>
-                    <div class="option">
-                        55
-                    </div>
-                    <div class="spacer">
-
-                    </div>
-                </div>
-            </div>
+                </div></div>
         </div>
-    </div>
+    </form>
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -182,6 +108,12 @@
                 this.view.removeClass("fade-out");
                 this.view.addClass("fade-in");
             }
+
+            hide() {
+                this.view.removeClass("fade-in");
+                this.view.addClass("fade-out");
+            }
+
         }
 
         $(".option").click(function(e) {
@@ -189,7 +121,24 @@
             var div = $(this);
             var column = div.parent();
             var bubble = column.parent();
+            var timeInput = $("#time-input");
+            var currentValue = timeInput.val();
+            var selectedValue = div.html();
 
+            // Sanitize values
+            if (currentValue == "") currentValue = "00:00";
+            if (selectedValue < 10) selectedValue = "0" + selectedValue;
+
+            // Update corresponding value
+            if (column.hasClass("left")) {
+                // Hour column
+                timeInput.val(selectedValue + currentValue.substring(2, 5));
+            } else {
+                // Minute column
+                timeInput.val(currentValue.substring(0, 3) + selectedValue);
+            }
+
+            // UI
             column.find(".option").removeClass("selected");
             div.addClass("selected");
 
@@ -207,6 +156,11 @@
         $("input[type='time']").blur(function(e) {
             $("#time-picker").removeClass("fade-in");
             $("#time-picker").addClass("fade-out");
+            console.log("hi");
+        });
+
+        $("#time-picker").click(function(e) {
+            $(this).addClass("visible");
         });
 
     </script>
