@@ -18,158 +18,16 @@
 
 <body>
 
-    <div class="bubble">
-        <div class="time-picker">
-            <div class="option">
-                1
-            </div>
-            <div class="option">
-                2
-            </div>
-            <div class="option">
-                3
-            </div>
-            <div class="option">
-                4
-            </div>
-        </div>
-    </div>
-
     <div class="template" id="new-event-form">
-
-        <!-- <form>
-            Hour:
-            <div class="hour-selection">
-                <div class="hour-bubble">
-                    00
-                </div>
-                <div class="hour-bubble">
-                    01
-                </div>
-                <div class="hour-bubble">
-                    02
-                </div>
-                <div class="hour-bubble">
-                    03
-                </div>
-                <div class="hour-bubble">
-                    04
-                </div>
-                <div class="hour-bubble">
-                    05
-                </div>
-                <div class="hour-bubble">
-                    06
-                </div>
-                <div class="hour-bubble">
-                    07
-                </div>
-                <div class="hour-bubble">
-                    08
-                </div>
-                <div class="hour-bubble">
-                    09
-                </div>
-                <div class="hour-bubble">
-                    10
-                </div>
-                <div class="hour-bubble">
-                    11
-                </div>
-            </div>
-            <div class="hour-selection">
-                <div class="hour-bubble">
-                    12
-                </div>
-                <div class="hour-bubble">
-                    13
-                </div>
-                <div class="hour-bubble">
-                    14
-                </div>
-                <div class="hour-bubble">
-                    15
-                </div>
-                <div class="hour-bubble">
-                    16
-                </div>
-                <div class="hour-bubble">
-                    17
-                </div>
-                <div class="hour-bubble">
-                    18
-                </div>
-                <div class="hour-bubble">
-                    19
-                </div>
-                <div class="hour-bubble">
-                    20
-                </div>
-                <div class="hour-bubble">
-                    21
-                </div>
-                <div class="hour-bubble">
-                    22
-                </div>
-                <div class="hour-bubble">
-                    23
-                </div>
-            </div>
-            Minute:
-            <div class="hour-selection">
-                <div class="hour-bubble">
-                    00
-                </div>
-                <div class="hour-bubble">
-                    05
-                </div>
-                <div class="hour-bubble">
-                    10
-                </div>
-                <div class="hour-bubble">
-                    15
-                </div>
-                <div class="hour-bubble">
-                    20
-                </div>
-                <div class="hour-bubble">
-                    25
-                </div>
-                <div class="hour-bubble">
-                    30
-                </div>
-                <div class="hour-bubble">
-                    35
-                </div>
-                <div class="hour-bubble">
-                    40
-                </div>
-                <div class="hour-bubble">
-                    45
-                </div>
-                <div class="hour-bubble">
-                    50
-                </div>
-                <div class="hour-bubble">
-                    55
-                </div>
-            </div>
-
-            <input type="text" class="title" placeholder="Title of your event" spellcheck="false" />
-
-            <input type="text" class="comments" placeholder="Enter additional comments (optional)" spellcheck="false"/>
-        </form> -->
-
         <form>
             <div class="time-title">
-                <input type="time" class="time "/>
+                <input type="time" class="time" id="time-input"/>
                 <input type="text" class="title" placeholder="Title of your event" spellcheck="false" />
             </div>
             <input type="text" class="comments" placeholder="Enter additional comments (optional)" spellcheck="false"/>
         </form>
     </div>
-
-    <div id="curtain" onclick="hideMessage()">
+    <div class="curtain" id="modal-curtain" onclick="hideMessage()">
         <div class="flying">
             <div class="modal centered" id="modal">
                 <div class="section title" id="modal-title">
@@ -185,6 +43,61 @@
                     <div class="button cancel" id="negative-button">
                         Cancel
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bubble" id="time-picker">
+        <div class="time-picker">
+            <div class="column left">
+                <div class="spacer">
+
+                </div>
+                <div class="option">0</div>
+                <div class="option">1</div>
+                <div class="option">2</div>
+                <div class="option">3</div>
+                <div class="option">4</div>
+                <div class="option">5</div>
+                <div class="option">6</div>
+                <div class="option">7</div>
+                <div class="option">8</div>
+                <div class="option">9</div>
+                <div class="option">10</div>
+                <div class="option">11</div>
+                <div class="option">12</div>
+                <div class="option">13</div>
+                <div class="option">14</div>
+                <div class="option">15</div>
+                <div class="option">16</div>
+                <div class="option">17</div>
+                <div class="option">18</div>
+                <div class="option">19</div>
+                <div class="option">20</div>
+                <div class="option">21</div>
+                <div class="option">22</div>
+                <div class="option">23</div>
+                <div class="spacer">
+
+                </div>
+            </div><div class="column">
+                <div class="spacer">
+
+                </div>
+                <div class="option">00</div>
+                <div class="option">05</div>
+                <div class="option">10</div>
+                <div class="option">15</div>
+                <div class="option">20</div>
+                <div class="option">25</div>
+                <div class="option">30</div>
+                <div class="option">35</div>
+                <div class="option">40</div>
+                <div class="option">45</div>
+                <div class="option">50</div>
+                <div class="option">55</div>
+                <div class="spacer">
+
                 </div>
             </div>
         </div>
@@ -279,9 +192,11 @@
     </div>
 
     <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <script src="./scripts/time-picker.js"></script>
 
     <script>
 
@@ -339,6 +254,16 @@
             event.stopPropagation();
         });
 
+        $("#modal").keypress(function(e) {
+            var key = e.keyCode;
+
+            if (key == 13) {
+                // Enter key pressed
+                $("#modal #positive-button").click();
+            }
+
+        });
+
         /* GENERIC UI */
 
         /**
@@ -359,7 +284,7 @@
             var nButton = $("#negative-button");
 
             $("body").addClass("no-scroll");
-            $("#curtain").addClass("visible");
+            $("#modal-curtain").addClass("visible dark");
             $("#modal-title").html(titleText);
             $("#modal-message").html(msgText);
 
@@ -400,8 +325,9 @@
                 doNothing();
             });
 
-            $("#curtain").removeClass("visible");
+            $("#modal-curtain").removeClass("visible dark");
             $("body").removeClass("no-scroll");
+            setTimeout(activeTimePicker.resetView(), 100);
         }
 
         /**
@@ -420,6 +346,30 @@
 
             setTimeout(hideView, 250);
 
+        }
+
+        /**
+         *  Show time picker
+         */
+        $("#modal").on('click', '#time-input', function(event) {
+            activeTimePicker = new TimePicker($("#modal #time-input"));
+            activeTimePicker.show();
+            event.stopPropagation();
+        });
+
+        $(".curtain").on('click', function(event) {
+            activeTimePicker.hide();
+        });
+
+        $("#modal").on('click', function(event) {
+            activeTimePicker.hide();
+        });
+
+        /**
+         *  Hide time picker
+         */
+        function hideTimePicker() {
+            activeTimePicker.hide();
         }
 
         /* UTILITY */
@@ -464,6 +414,9 @@
                 null,
                 null
             )
+
+            setTimeout('$("#modal #time-input").focus(); $("#modal #time-input").click()', 110);
+
         }
 
         /*

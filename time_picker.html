@@ -28,9 +28,8 @@
 
 <body>
 
-    <form>
-        <div class="time-input-zone">
-            <input type="time" id="time-input" />
+    <div class="curtain" id="time-picker-curtain" onclick="hideTimePicker()">
+        <div class="flying">
             <div class="bubble" id="time-picker">
                 <div class="time-picker">
                     <div class="column left">
@@ -84,8 +83,13 @@
 
                         </div>
                     </div>
-                </div></div>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <form>
+        <input type="time" id="time-input" />
     </form>
 
     <script
@@ -95,23 +99,29 @@
 
     <script>
 
+        var activeTimePicker = null;
+
         class TimePicker {
 
             constructor(formInput) {
                 this.input = formInput;
                 this.view = $("#time-picker");
+                this.container = $("#time-picker-curtain");
             }
 
             show() {
-                this.view.css("left", this.input.position().left + this.input.outerWidth() / 2 - this.view.outerWidth() / 2);
-                this.view.css("top", this.input.position().top + this.input.outerHeight() + 10);
-                this.view.removeClass("fade-out");
-                this.view.addClass("fade-in");
+                this.view.css("left", this.input.position().left + this.input.outerWidth(true) / 2 - this.view.outerWidth(true) / 2);
+                this.view.css("top", this.input.position().top + this.input.outerHeight(true) / 2 + this.input.outerHeight());
+                this.view.css("visibility", "visible");
+                this.container.addClass("visible");
+                this.view.removeClass("zoom-fade-out");
+                this.view.addClass("zoom-fade-in");
             }
 
             hide() {
-                this.view.removeClass("fade-in");
-                this.view.addClass("fade-out");
+                this.view.removeClass("zoom-fade-in");
+                this.view.addClass("zoom-fade-out");
+                this.container.removeClass("visible");
             }
 
         }
@@ -127,11 +137,11 @@
 
             // Sanitize values
             if (currentValue == "") currentValue = "00:00";
-            if (selectedValue < 10) selectedValue = "0" + selectedValue;
 
             // Update corresponding value
             if (column.hasClass("left")) {
                 // Hour column
+                if (selectedValue < 10) selectedValue = "0" + selectedValue;
                 timeInput.val(selectedValue + currentValue.substring(2, 5));
             } else {
                 // Minute column
@@ -146,22 +156,18 @@
                 scrollTop: column.scrollTop() + div.position().top - bubble.innerHeight() / 2 + div.outerHeight() / 2
             }, 200);
 
-        })
+            e.stopPropagation();
 
-        $("input[type='time']").click(function(e) {
-            var timePicker = new TimePicker($(this));
-            timePicker.show();
         });
 
-        $("input[type='time']").blur(function(e) {
-            $("#time-picker").removeClass("fade-in");
-            $("#time-picker").addClass("fade-out");
-            console.log("hi");
+        $("input[type='time']").focus(function(e) {
+            activeTimePicker = new TimePicker($(this));
+            activeTimePicker.show();
         });
 
-        $("#time-picker").click(function(e) {
-            $(this).addClass("visible");
-        });
+        function hideTimePicker() {
+            activeTimePicker.hide();
+        }
 
     </script>
 
