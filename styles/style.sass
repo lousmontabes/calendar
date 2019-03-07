@@ -12,6 +12,9 @@ $title-font: "Varela Round"
 $ui-font: "Varela Round"
 $body-font: "Open Sans"
 
+// Effects
+$light-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1)
+
 /*
  *  STYLESHEET
  */
@@ -93,7 +96,7 @@ body
   background: $header-background-color
   padding: 2em
   color: #dff9fb
-  box-shadow: 0px 0px 15px $shadow-color
+  box-shadow: $light-shadow
 
 .area
   padding: 2em
@@ -124,7 +127,7 @@ body
   margin-bottom: 2em
   background: white
   border-radius: 0.25em
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1)
+  box-shadow: $light-shadow
   width: 16.5em
   padding-bottom: 0
   &.today
@@ -134,6 +137,7 @@ body
     box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1)
 
 .event
+  padding: 2em
   transition: margin-top .2s, opacity .05s
   font-size: 22px
   padding: 0.5em 0
@@ -232,7 +236,7 @@ body
   max-width: 33em
   min-height: 5em
   border-radius: 0.25em
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1)
+  box-shadow: $light-shadow
   overflow: hidden
   font-family: $ui-font
   font-size: 18px
@@ -389,7 +393,7 @@ input[type="time"]::-webkit-clear-button
   background: #30336b
   color: white
   position: absolute
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1)
+  box-shadow: $light-shadow
   text-align: center
   top: 45vh
   left: 45vw
