@@ -2,6 +2,7 @@
 $background-color: rgb(240, 240, 240)
 $header-background-color: #30336b
 $header-background-color-bright: #3e428c
+$section-background: white
 $accent-color: #95afc0
 $shadow-color: rgba(0, 0, 0, 0.1)
 $negative-color: #eb4d4b
@@ -88,7 +89,7 @@ $light-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1)
     opacity: 0
 
 body
-  background: #f0f0f0
+  background: $background-color
   margin: 0
   font-family: $body-font
 
@@ -125,7 +126,7 @@ body
   margin: 0 1em
   vertical-align: top
   margin-bottom: 2em
-  background: white
+  background: $section-background
   border-radius: 0.25em
   box-shadow: $light-shadow
   width: 20.5em
@@ -240,7 +241,7 @@ body
   margin: 0 auto
 
 .modal
-  background: white
+  background: $section-background
   min-width: 10em
   max-width: 33em
   min-height: 5em
@@ -399,7 +400,7 @@ input[type="time"]::-webkit-clear-button
 
 .bubble
   opacity: 0
-  background: #30336b
+  background: $header-background-color
   color: white
   position: absolute
   box-shadow: $light-shadow
