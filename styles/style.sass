@@ -128,7 +128,7 @@ body
   background: white
   border-radius: 0.25em
   box-shadow: $light-shadow
-  width: 16.5em
+  width: 20.5em
   padding-bottom: 0
   &.today
     border: 1px solid lightgrey
@@ -136,8 +136,11 @@ body
     transform: translateY(-3px)
     box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1)
 
-.event
+.entry-header
   padding: 2em
+  padding-bottom: 0
+
+.event
   transition: margin-top .2s, opacity .05s
   font-size: 22px
   padding: 0.5em 0
@@ -162,14 +165,6 @@ body
 
 .entry
   .event
-    &.slide-up-in .buttons
-      animation: slideUpIn .2s linear
-    &.slide-down-in .buttons
-      animation: slideDownIn .2s linear
-    &.slide-up-out .buttons
-      animation: slideUpOut .2s linear
-    &.slide-down-out .buttons
-      animation: slideDownOut .2s linear
     i
       transition: .1s
       padding: .1em
@@ -179,24 +174,38 @@ body
       &.caution
         &:hover
           color: $negative-color
-    &:hover
-      .info
-        color: $accent-color
-      .buttons
-        opacity: 1
-        transform: translateY(0)
+
   .add-event
     transition: .1s
-    cursor: pointer
     padding: 1.5em 0 2em 0
     font-size: 18px
     font-family: $ui-font
     opacity: .5
     i
       margin-right: .5em
-    &:hover
+
+.event-wrap
+  padding: 0 2em
+  &:hover
+    .event
+      .info
+        color: $accent-color
+      .buttons
+        opacity: 1
+        transform: translateY(0)
+    .add-event
       opacity: 1
       color: $accent-color
+  &.clickable
+    cursor: pointer
+  &.slide-up-in .buttons
+    animation: slideUpIn .2s linear
+  &.slide-down-in .buttons
+    animation: slideDownIn .2s linear
+  &.slide-up-out .buttons
+    animation: slideUpOut .2s linear
+  &.slide-down-out .buttons
+    animation: slideDownOut .2s linear
 
 .new-entry
   cursor: pointer

@@ -111,74 +111,90 @@
 
     <div class="area">
 
-        <div class="section entry" id="entry1">
+        <div class="entry" id="entry1">
 
-            <h2><b>Today</b></h2>
+            <div class="entry-header">
+                <h2><b>Today</b></h2>
+            </div>
 
-            <div class="event" id="event1">
-                <div class="buttons down">
-                    <i class="far fa-edit"></i>
-                    <i class="far fa-trash-alt caution" onclick="promptRemove('event1')"></i>
-                </div>
-                <div class="info">
-                    10:00 - Juice
-                    <div class="comments">
-                        Cal copiar dades de l'usuari. Avisar a secretaria
+            <div class="event-wrap">
+                <div class="event" id="event1">
+                    <div class="buttons down">
+                        <i class="far fa-edit"></i>
+                        <i class="far fa-trash-alt caution" onclick="promptRemove('event1')"></i>
+                    </div>
+                    <div class="info">
+                        10:00 - Juice
+                        <div class="comments">
+                            Cal copiar dades de l'usuari. Avisar a secretaria
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="event" id="event2">
-                <div class="buttons alt">
-                    <i class="far fa-edit"></i>
-                    <i class="far fa-trash-alt caution" onclick="promptRemove('event2')"></i>
-                </div>
-                <div class="info">
-                    11:00 - Pedro
-                    <div class="comments">
-                        Enviat correu
+            <div class="event-wrap">
+                <div class="event" id="event2">
+                    <div class="buttons alt">
+                        <i class="far fa-edit"></i>
+                        <i class="far fa-trash-alt caution" onclick="promptRemove('event2')"></i>
+                    </div>
+                    <div class="info">
+                        11:00 - Pedro
+                        <div class="comments">
+                            Enviat correu
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="event last" id="event3">
-                <div class="buttons alt">
-                    <i class="far fa-edit"></i>
-                    <i class="far fa-trash-alt caution" onclick="promptRemove('event3')"></i>
-                </div>
-                <div class="info">
-                    12:00 - Vitor
-                    <div class="comments">
-                        La usuària vol que s'instal·li Office 2007, Skype, OpenOffice, Adobe CC, i tots els programes necessaris per a l'estudi de l'arquitectura aquífera.
+            <div class="event-wrap">
+                <div class="event last" id="event3">
+                    <div class="buttons alt">
+                        <i class="far fa-edit"></i>
+                        <i class="far fa-trash-alt caution" onclick="promptRemove('event3')"></i>
+                    </div>
+                    <div class="info">
+                        12:00 - Vitor
+                        <div class="comments">
+                            La usuària vol que s'instal·li Office 2007, Skype, OpenOffice, Adobe CC, i tots els programes necessaris per a l'estudi de l'arquitectura aquífera.
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="add-event" onclick="promptAdd('entry1')">
-                <i class="fas fa-plus-square"></i> New event
+            <div class="event-wrap clickable" onclick="promptAdd('entry1')">
+                <div class="add-event">
+                    <i class="fas fa-plus-square"></i> New event
+                </div>
             </div>
 
         </div>
 
-        <div class="section entry" id="entry2">
+        <div class="entry" id="entry2">
 
-            <h2><b>Tomorrow</b></h2>
+            <div class="entry-header">
+                <h2><b>Tomorrow</b></h2>
+            </div>
 
-            <div class="event last" id="event4">
-                <div class="buttons alt">
-                    <i class="far fa-edit"></i>
-                    <i class="far fa-trash-alt caution" onclick="promptRemove('event4')"></i>
-                </div>
-                <div class="info">
-                    12:00 - Vitor
-                    <div class="comments">
-                        Ordinador del taulell biblioteca GiH. Clonar amb imatge de biblioteques
+            <div class="event-wrap">
+                <div class="event last" id="event4">
+                    <div class="buttons alt">
+                        <i class="far fa-edit"></i>
+                        <i class="far fa-trash-alt caution" onclick="promptRemove('event4')"></i>
+                    </div>
+                    <div class="info">
+                        12:00 - Vitor
+                        <div class="comments">
+                            Ordinador del taulell biblioteca GiH. Clonar amb imatge de biblioteques
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="add-event" onclick="promptAdd('entry2')">
-                <i class="fas fa-plus-square"></i> New event
+            <div class="event-wrap clickable" onclick="promptAdd('entry2')">
+                <div class="add-event">
+                    <i class="fas fa-plus-square"></i> New event
+                </div>
             </div>
 
         </div>
@@ -215,7 +231,7 @@
 
         /* Event buttons directional hover effect */
 
-        $(".event").mouseenter(function(event) {
+        $(".event-wrap").mouseenter(function(event) {
 
             var mouseY = event.pageY;
             var div = $(this);
@@ -234,7 +250,7 @@
 
         });
 
-        $(".event").mouseleave(function(event) {
+        $(".event-wrap").mouseleave(function(event) {
 
             var mouseY = event.pageY;
             var div = $(this);
