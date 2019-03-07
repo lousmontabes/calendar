@@ -43,7 +43,7 @@ $(".option").click(function(e) {
     var bubble = column.parent();
     var timeInput = activeTimePicker.input;
     var currentValue = timeInput.val();
-    var selectedValue = div.html();
+    var selectedValue = div.attr("data-value");
 
     // Sanitize values
     if (currentValue == "") currentValue = "00:00";
@@ -51,7 +51,6 @@ $(".option").click(function(e) {
     // Update corresponding value
     if (column.hasClass("left")) {
         // Hour column
-        if (selectedValue < 10) selectedValue = "0" + selectedValue;
         timeInput.val(selectedValue + currentValue.substring(2, 5));
     } else {
         // Minute column
