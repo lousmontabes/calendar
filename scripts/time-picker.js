@@ -2,9 +2,13 @@ var activeTimePicker = null;
 
 class TimePicker {
 
-    constructor(formInput) {
+    constructor(formInput, initialHour, initialMin) {
         this.input = formInput;
         this.view = $("#time-picker");
+        this.hColumn = this.view.find("#hour-column");
+        this.mColumn = this.view.find("#minute-column");
+        this.iH = initialHour;
+        this.iM = initialMin;
     }
 
     show() {
@@ -12,8 +16,17 @@ class TimePicker {
            // Browser is Microsoft Edge. Do not show time picker
            // over built-in solution.
        } else {
+           // Place view under time input
            this.view.css("left", this.input.position().left + this.input.outerWidth(true) / 2 - this.view.outerWidth(true) / 2);
            this.view.css("top", this.input.position().top + this.input.outerHeight(true) / 2 + this.input.outerHeight());
+
+           // Scroll to initial hh:mm
+           console.log(this.hColumn);
+           console.log(this.hColumn.find(`[data-value='${this.iH}']`));
+           this.hColumn.scrollTop(this.hColumn.find(`[data-value='${this.iH}']`).offset().top - this.hColumn.offset().top);
+           this.mColumn.scrollTop(this.mColumn.find(`[data-value='${this.iM}']`).offset().top - this.mColumn.offset().top);
+
+           // Animate & make view visible
            this.view.addClass("visible");
            this.view.removeClass("zoom-fade-out");
            this.view.addClass("zoom-fade-in");
@@ -27,6 +40,10 @@ class TimePicker {
         setTimeout(function() {
             that.view.removeClass("visible")
         }, 100);
+
+         this.hColumn.scrollTop(0);
+         this.mColumn.scrollTop(0);
+
     }
 
     resetView() {
