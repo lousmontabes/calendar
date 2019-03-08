@@ -21,10 +21,12 @@ class TimePicker {
            this.view.css("top", this.input.position().top + this.input.outerHeight(true) / 2 + this.input.outerHeight());
 
            // Scroll to initial hh:mm
+           /*
            console.log(this.hColumn);
            console.log(this.hColumn.find(`[data-value='${this.iH}']`));
            this.hColumn.scrollTop(this.hColumn.find(`[data-value='${this.iH}']`).offset().top - this.hColumn.offset().top);
            this.mColumn.scrollTop(this.mColumn.find(`[data-value='${this.iM}']`).offset().top - this.mColumn.offset().top);
+           */
 
            // Animate & make view visible
            this.view.addClass("visible");
@@ -38,17 +40,14 @@ class TimePicker {
         this.view.addClass("zoom-fade-out");
         var that = this;
         setTimeout(function() {
-            that.view.removeClass("visible")
+            that.view.removeClass("visible");
         }, 100);
-
-         this.hColumn.scrollTop(0);
-         this.mColumn.scrollTop(0);
-
     }
 
     resetView() {
         this.view.find(".option").removeClass("selected");
-        this.view.find(".column").scrollTop(0);
+        this.hColumn.scrollTop(0);
+        this.mColumn.scrollTop(0);
     }
 
 }

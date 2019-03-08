@@ -81,8 +81,7 @@
                 <div class="spacer">
 
                 </div>
-            </div>
-            <div class="column" id="minute-column">
+            </div><div class="column" id="minute-column">
                 <div class="spacer">
 
                 </div>
@@ -344,7 +343,9 @@
 
             $("#modal-curtain").removeClass("visible dark");
             $("body").removeClass("no-scroll");
-            setTimeout(activeTimePicker.resetView(), 100);
+            setTimeout(function() {
+                activeTimePicker.resetView();
+            }, 100);
         }
 
         /**
@@ -369,7 +370,7 @@
          *  Show time picker
          */
         $("#modal").on('click', '#time-input', function(event) {
-            activeTimePicker = new TimePicker($("#modal #time-input"), "09", "10");
+            activeTimePicker = new TimePicker($("#modal #time-input"), "00", "00");
             activeTimePicker.show();
             event.stopPropagation();
         });
