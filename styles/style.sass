@@ -1,13 +1,14 @@
 // Colors
 $background-color: rgb(240, 240, 240)
 $header-background-color: #30336b
-$header-background-color-bright: #3e428c
+$header-background-color-bright: lighten($header-background-color, 10%)
 $section-background: white
 $accent-color: #95afc0
 $shadow-color: rgba(0, 0, 0, 0.1)
 $negative-color: #eb4d4b
 $positive-color: #6ab04c
 $subtitle-color: #323232
+$header-text-color: white
 
 // Fonts
 $title-font: "Varela Round"
@@ -15,7 +16,8 @@ $ui-font: "Varela Round"
 $body-font: "Open Sans"
 
 // Effects
-$light-shadow: 0 2px 20px rgba(0, 0, 0, 0.05)
+$light-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.1)
+$light-shadow-highlighted: 0px 10px 40px -10px rgba($accent-color, .25)
 
 /*
  *  STYLESHEET
@@ -97,7 +99,7 @@ body
 .header
   background: $header-background-color
   padding: 2em
-  color: #dff9fb
+  color: $header-text-color
   box-shadow: $light-shadow
 
 .area
@@ -136,7 +138,7 @@ body
     border: 1px solid lightgrey
   &:hover
     transform: translateY(-3px)
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05)
+    box-shadow: $light-shadow-highlighted
 
 .entry-header
   padding: 2em
@@ -146,12 +148,11 @@ body
   transition: margin-top .2s, opacity .05s
   font-size: 22px
   padding: 0.5em 0
-  border-bottom: 1px solid #f0f0f0
+  border-bottom: 1px solid rgba(0, 0, 0, .05)
   color: $subtitle-color
   .buttons
     float: right
     opacity: 0
-    background: white
     transition: opacity .2s
     cursor: pointer
   &.last
@@ -182,7 +183,8 @@ body
     padding: 1.5em 0 2em 0
     font-size: 18px
     font-family: $ui-font
-    opacity: .5
+    color: $accent-color
+    opacity: .75
     i
       margin-right: .5em
 
