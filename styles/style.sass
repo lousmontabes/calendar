@@ -16,8 +16,9 @@ $ui-font: "Varela Round"
 $body-font: "Open Sans"
 
 // Effects
-$light-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.1)
-$light-shadow-highlighted: 0px 10px 40px -10px rgba($accent-color, .25)
+$soft-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.1)
+$soft-shadow-highlighted: 0px 10px 40px -10px rgba($accent-color, .25)
+$hard-shadow: 0px 4px 8px 2px rgba(0,0,0,0.1)
 
 /*
  *  STYLESHEET
@@ -95,6 +96,7 @@ body
   background: $background-color
   margin: 0
   font-family: $body-font
+  color: $subtitle-color
 
 ::selection
   background: rgba($accent-color, .2)
@@ -123,6 +125,7 @@ body
   float: left
   margin: .5em
   border-radius: 3px
+  box-shadow: $hard-shadow
 
 .area
   padding: 3em
@@ -153,14 +156,15 @@ body
   margin-bottom: 2em
   background: $section-background
   border-radius: 0.3em
-  box-shadow: $light-shadow
+  box-shadow: $soft-shadow
   width: 20.5em
   padding-bottom: 0
+  font-size: 14px
   &.today
     border: 1px solid lightgrey
   &:hover
     transform: translateY(-1px)
-    box-shadow: $light-shadow-highlighted
+    box-shadow: $soft-shadow-highlighted
   &.empty
     background: transparent
     border: 1px dashed lightgrey
@@ -171,7 +175,7 @@ body
       color: lightgrey
     &:hover
       background: $section-background
-      border: none
+      border: 1px dashed transparent
       .entry-header
         h2
           color: $accent-color
@@ -184,7 +188,7 @@ body
 
 .event
   transition: margin-top .2s, opacity .05s
-  font-size: 22px
+  font-size: 20px
   padding: 0.5em 0
   border-bottom: 1px solid rgba(0, 0, 0, .05)
   color: $subtitle-color
@@ -287,7 +291,7 @@ body
   max-width: 33em
   min-height: 5em
   border-radius: 0.25em
-  box-shadow: $light-shadow
+  box-shadow: $soft-shadow
   overflow: hidden
   font-family: $ui-font
   font-size: 18px
@@ -444,7 +448,7 @@ input[type="time"]::-webkit-clear-button
   background: $header-background-color
   color: white
   position: absolute
-  box-shadow: $light-shadow
+  box-shadow: $soft-shadow
   text-align: center
   top: 45vh
   left: 45vw
