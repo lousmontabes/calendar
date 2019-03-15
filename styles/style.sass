@@ -142,6 +142,22 @@ body
   &:hover
     transform: translateY(-1px)
     box-shadow: $light-shadow-highlighted
+  &.empty
+    background: transparent
+    border: 1px dashed lightgrey
+    .entry-header
+      h2
+        color: lightgrey
+    .add-event
+      color: lightgrey
+    &:hover
+      background: $section-background
+      border: none
+      .entry-header
+        h2
+          color: $accent-color
+      .add-event
+        color: rgba($accent-color, .8)
 
 .entry-header
   padding: 2em
