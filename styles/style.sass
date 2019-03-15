@@ -100,13 +100,32 @@ body
   background: rgba($accent-color, .2)
 
 .header
-  background: $header-background-color
-  padding: 2em
-  color: $header-text-color
-  box-shadow: $light-shadow
+  color: $subtitle-color
+  font-size: 18px
+  background: $accent-color
+  .calendar-info
+    margin: .5em
+    margin-left: 4.5em
+    .author-username
+      color: white
+      opacity: .5
+    .calendar-title
+      color: white
+  .title
+    padding: 1em 4em
+
+.avatar
+  background-image: url("../img/avatar.jpg")
+  background-size: contain
+  height: 3em
+  width: 3em
+  display: inline-block
+  float: left
+  margin: .5em
+  border-radius: 3px
 
 .area
-  padding: 2em
+  padding: 3em
   min-width: 40em
   margin: 0 auto
   h1
