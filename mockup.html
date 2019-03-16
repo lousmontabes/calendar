@@ -108,113 +108,246 @@
         <div class="title">
             <div class="avatar"></div>
             <div class="calendar-info">
-                <div class="author-username">lousmontabes</div>
+                <div class="author-username">lousmontabes</div><br />
                 <div class="calendar-title">Calendari de migracions <i class="fas fa-caret-down"></i></div>
             </div>
         </div>
     </div>
 
-    <div class="area">
 
-        <div class="entry" id="entry1">
+    <div class="entries" id="entries-view">
 
-            <div class="entry-header">
-                <h2>Today</h2>
+        <div class="area">
+
+            <div class="entry" id="entry1">
+
+                <div class="entry-header">
+                    <h2>Today</h2>
+                </div>
+
+                <div class="event-wrap">
+                    <div class="event" id="event1">
+                        <div class="buttons down">
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt caution" onclick="promptRemove('event1')"></i>
+                        </div>
+                        <div class="info">
+                            10:00 - Juice
+                            <div class="comments">
+                                Cal copiar dades de l'usuari. Avisar a secretaria
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-wrap">
+                    <div class="event" id="event2">
+                        <div class="buttons alt">
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt caution" onclick="promptRemove('event2')"></i>
+                        </div>
+                        <div class="info">
+                            11:00 - Pedro
+                            <div class="comments">
+                                Enviat correu
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-wrap">
+                    <div class="event last" id="event3">
+                        <div class="buttons alt">
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt caution" onclick="promptRemove('event3')"></i>
+                        </div>
+                        <div class="info">
+                            12:00 - Vitor
+                            <div class="comments">
+                                La usuària vol que s'instal·li Office 2007, Skype, OpenOffice, Adobe CC, i tots els programes necessaris per a l'estudi de l'arquitectura aquífera.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-wrap clickable" onclick="promptAdd('entry1')">
+                    <div class="add-event">
+                        <i class="fas fa-plus-square"></i> Add event
+                    </div>
+                </div>
+
             </div>
 
-            <div class="event-wrap">
-                <div class="event" id="event1">
-                    <div class="buttons down">
-                        <i class="far fa-edit"></i>
-                        <i class="far fa-trash-alt caution" onclick="promptRemove('event1')"></i>
-                    </div>
-                    <div class="info">
-                        10:00 - Juice
-                        <div class="comments">
-                            Cal copiar dades de l'usuari. Avisar a secretaria
+            <div class="entry" id="entry2">
+
+                <div class="entry-header">
+                    <h2>Tomorrow</h2>
+                </div>
+
+                <div class="event-wrap">
+                    <div class="event last" id="event4">
+                        <div class="buttons alt">
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt caution" onclick="promptRemove('event4')"></i>
                         </div>
+                        <div class="info">
+                            12:00 - Vitor
+                            <div class="comments">
+                                Ordinador del taulell biblioteca GiH. Clonar amb imatge de biblioteques
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-wrap clickable" onclick="promptAdd('entry2')">
+                    <div class="add-event">
+                        <i class="fas fa-plus-square"></i> Add event
                     </div>
                 </div>
             </div>
 
-            <div class="event-wrap">
-                <div class="event" id="event2">
-                    <div class="buttons alt">
-                        <i class="far fa-edit"></i>
-                        <i class="far fa-trash-alt caution" onclick="promptRemove('event2')"></i>
-                    </div>
-                    <div class="info">
-                        11:00 - Pedro
-                        <div class="comments">
-                            Enviat correu
+            <div class="entry" id="entry1">
+
+                <div class="entry-header">
+                    <h2>Today</h2>
+                </div>
+
+                <div class="event-wrap">
+                    <div class="event" id="event1">
+                        <div class="buttons down">
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt caution" onclick="promptRemove('event1')"></i>
                         </div>
+                        <div class="info">
+                            10:00 - Juice
+                            <div class="comments">
+                                Cal copiar dades de l'usuari. Avisar a secretaria
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-wrap">
+                    <div class="event" id="event2">
+                        <div class="buttons alt">
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt caution" onclick="promptRemove('event2')"></i>
+                        </div>
+                        <div class="info">
+                            11:00 - Pedro
+                            <div class="comments">
+                                Enviat correu
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-wrap">
+                    <div class="event last" id="event3">
+                        <div class="buttons alt">
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt caution" onclick="promptRemove('event3')"></i>
+                        </div>
+                        <div class="info">
+                            12:00 - Vitor
+                            <div class="comments">
+                                La usuària vol que s'instal·li Office 2007, Skype, OpenOffice, Adobe CC, i tots els programes necessaris per a l'estudi de l'arquitectura aquífera.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-wrap clickable" onclick="promptAdd('entry1')">
+                    <div class="add-event">
+                        <i class="fas fa-plus-square"></i> Add event
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="entry" id="entry2">
+
+                <div class="entry-header">
+                    <h2>Tomorrow</h2>
+                </div>
+
+                <div class="event-wrap">
+                    <div class="event last" id="event4">
+                        <div class="buttons alt">
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt caution" onclick="promptRemove('event4')"></i>
+                        </div>
+                        <div class="info">
+                            12:00 - Vitor
+                            <div class="comments">
+                                Ordinador del taulell biblioteca GiH. Clonar amb imatge de biblioteques
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-wrap clickable" onclick="promptAdd('entry2')">
+                    <div class="add-event">
+                        <i class="fas fa-plus-square"></i> Add event
                     </div>
                 </div>
             </div>
 
-            <div class="event-wrap">
-                <div class="event last" id="event3">
-                    <div class="buttons alt">
-                        <i class="far fa-edit"></i>
-                        <i class="far fa-trash-alt caution" onclick="promptRemove('event3')"></i>
-                    </div>
-                    <div class="info">
-                        12:00 - Vitor
-                        <div class="comments">
-                            La usuària vol que s'instal·li Office 2007, Skype, OpenOffice, Adobe CC, i tots els programes necessaris per a l'estudi de l'arquitectura aquífera.
+            <div class="entry" id="entry2">
+
+                <div class="entry-header">
+                    <h2>Tomorrow</h2>
+                </div>
+
+                <div class="event-wrap">
+                    <div class="event last" id="event4">
+                        <div class="buttons alt">
+                            <i class="far fa-edit"></i>
+                            <i class="far fa-trash-alt caution" onclick="promptRemove('event4')"></i>
                         </div>
+                        <div class="info">
+                            12:00 - Vitor
+                            <div class="comments">
+                                Ordinador del taulell biblioteca GiH. Clonar amb imatge de biblioteques
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-wrap clickable" onclick="promptAdd('entry2')">
+                    <div class="add-event">
+                        <i class="fas fa-plus-square"></i> Add event
                     </div>
                 </div>
             </div>
 
-            <div class="event-wrap clickable" onclick="promptAdd('entry1')">
-                <div class="add-event">
-                    <i class="fas fa-plus-square"></i> Add event
+            <div class="entry empty" id="new-entry">
+
+                <div class="entry-header">
+                    <h2>New entry</h2>
+                </div>
+
+                <div class="event-wrap clickable" onclick="promptAdd('entry2')">
+                    <div class="add-event">
+                        <i class="fas fa-plus-square"></i> Add event
+                    </div>
                 </div>
             </div>
 
         </div>
 
-        <div class="entry" id="entry2">
+    </div>
 
-            <div class="entry-header">
-                <h2>Tomorrow</h2>
+    <div class="floating-menu">
+        <div class="area">
+            <div class="button" id="to-beginning-button" onclick="toBeginning()">
+                <i class="fas fa-arrow-left"></i> Go to beginning
             </div>
-
-            <div class="event-wrap">
-                <div class="event last" id="event4">
-                    <div class="buttons alt">
-                        <i class="far fa-edit"></i>
-                        <i class="far fa-trash-alt caution" onclick="promptRemove('event4')"></i>
-                    </div>
-                    <div class="info">
-                        12:00 - Vitor
-                        <div class="comments">
-                            Ordinador del taulell biblioteca GiH. Clonar amb imatge de biblioteques
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="event-wrap clickable" onclick="promptAdd('entry2')">
-                <div class="add-event">
-                    <i class="fas fa-plus-square"></i> Add event
-                </div>
+            <div class="button right" id="new-entry-button">
+                <i class="far fa-edit"></i> New entry
             </div>
         </div>
-
-        <div class="entry empty" id="new-entry">
-
-            <div class="entry-header">
-                <h2>New entry</h2>
-            </div>
-
-            <div class="event-wrap clickable" onclick="promptAdd('entry2')">
-                <div class="add-event">
-                    <i class="fas fa-plus-square"></i> Add event
-                </div>
-            </div>
-        </div>
+    </div>
 
     </div>
 
@@ -222,8 +355,13 @@
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.js"></script>
 
     <script src="./scripts/time-picker.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
 
     <script>
 
@@ -288,6 +426,33 @@
                 // Enter key pressed
                 $("#modal #positive-button").click();
             }
+
+        });
+
+        /**
+         *  Entries div horizontal scroller
+         */
+        $("#entries-view").mousewheel(function(event, delta) {
+
+            $(this).clearQueue();
+
+            $(this).animate({
+                scrollLeft: this.scrollLeft - delta * $("#entry1").outerWidth()
+            }, 200);
+
+            event.preventDefault();
+        });
+
+        $("#entries-view").scroll(function(event) {
+
+            var minThreshold = $("#entry1").outerWidth();
+            var maxThreshold = $(this).outerWidth() - minThreshold;
+
+            if ($(this).scrollLeft() <= minThreshold) $("#to-beginning-button").removeClass("visible");
+            if ($(this).scrollLeft() > minThreshold) $("#to-beginning-button").addClass("visible");
+
+            if ($(this).scrollLeft() <= maxThreshold) $("#new-entry-button").addClass("visible");
+            if ($(this).scrollLeft() > maxThreshold) $("#new-entry-button").removeClass("visible");
 
         });
 
@@ -447,6 +612,21 @@
             setTimeout('$("#modal #time-input").focus(); $("#modal #time-input").click()', 110);
 
         }
+
+        /**
+         *  Reset entries view scroll back to 0
+         */
+         function toBeginning() {
+
+             var entriesView = $("#entries-view");
+
+             entriesView.clearQueue();
+
+             entriesView.animate({
+                 scrollLeft: 0
+             }, 200);
+
+         }
 
         /*
          *  Does nothing.
